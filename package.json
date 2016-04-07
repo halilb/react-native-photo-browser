@@ -1,0 +1,17 @@
+{
+  "name": "react-native-photo-browser",
+  "keywords": [
+    "react",
+    "react-component",
+    "react-native",
+    "photo browser",
+    "ios"
+  ],
+  "version": "0.0.1",
+  "description": "Photo browser component for React Native.",
+  "main": "PhotoBrowser.js",
+  "scripts": {
+  },
+  "author": "Halil Bilir <hbilir@gmail.com>",
+  "license": "MIT"
+}

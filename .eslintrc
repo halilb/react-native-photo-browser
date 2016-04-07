@@ -1,0 +1,10 @@
+// extended using airbnb's eslint config
+// see: https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb
+{
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+
+  "rules": {
+    "no-use-before-define": 0
+  }
+}
