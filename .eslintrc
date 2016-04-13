@@ -6,6 +6,11 @@
 
   "rules": {
     "no-use-before-define": 0,
-    "react/jsx-closing-bracket-location": 0
+    "no-return-assign": 0,
+    "react/jsx-closing-bracket-location": 0,
+    "react/jsx-no-bind": [2, {
+      "ignoreRefs": true,
+      "allowBind": true
+    }]
   }
 }

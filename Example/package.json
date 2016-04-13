@@ -8,6 +8,7 @@
   "dependencies": {
     "react": "^0.14.8",
     "react-native": "^0.23.0",
-    "react-native-photo-browser": "file:../"
+    "react-native-photo-browser": "file:../",
+    "react-native-progress": "^2.2.2"
   }
 }

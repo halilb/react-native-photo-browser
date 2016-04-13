@@ -1,7 +1,6 @@
 import React, {
   Animated,
   Dimensions,
-  Image,
   Text,
   ListView,
   View,
@@ -10,6 +9,8 @@ import React, {
   StatusBar,
   TouchableWithoutFeedback,
 } from 'react-native';
+
+import Photo from './Photo';
 
 const sizes = Dimensions.get('window');
 const screenWidth = sizes.width;
@@ -24,15 +25,20 @@ export default class PhotoBrowser extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    this._renderImage = this._renderImage.bind(this);
+    this._renderPhoto = this._renderPhoto.bind(this);
     this._toggleControls = this._toggleControls.bind(this);
     this._onScroll = this._onScroll.bind(this);
 
+    this.photoRefs = [];
     this.state = {
       currentIndex: 0,
       showControls: true,
       controlAnim: new Animated.Value(1),
     };
+  }
+
+  componentDidMount() {
+    this._triggerCurrentPhotoLoad();
   }
 
   _onScroll(e) {
@@ -47,6 +53,12 @@ export default class PhotoBrowser extends React.Component {
     this.setState({
       currentIndex,
     });
+    this._triggerCurrentPhotoLoad();
+  }
+
+  _triggerCurrentPhotoLoad() {
+    const current = this.photoRefs[this.state.currentIndex];
+    current.load();
   }
 
   _toggleControls() {
@@ -62,13 +74,13 @@ export default class PhotoBrowser extends React.Component {
     }).start();
   }
 
-  _renderImage(image) {
+  _renderPhoto(photo, sectionID, rowID) {
     return (
       <TouchableWithoutFeedback onPress={this._toggleControls}>
-        <Image
+        <Photo
+          ref={ref => this.photoRefs[rowID] = ref}
           style={[styles.fullSize, styles.image]}
-          source={{ uri: image }}
-          resizeMode={'contain'}
+          uri={photo}
         />
       </TouchableWithoutFeedback>
     );
@@ -107,7 +119,7 @@ export default class PhotoBrowser extends React.Component {
         <ListView
           style={styles.list}
           dataSource={this.props.dataSource}
-          renderRow={this._renderImage}
+          renderRow={this._renderPhoto}
           onScroll={this._onScroll}
           horizontal
           pagingEnabled
@@ -131,8 +143,6 @@ const styles = StyleSheet.create({
   list: {
     flex: 1,
   },
-  image: {
-  },
   text: {
     color: 'white',
   },
@@ -149,5 +159,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#141414',
     borderBottomColor: 'rgba(0, 0, 0, 0.1)',
     borderBottomWidth: 1,
+  },
+  image: {
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
