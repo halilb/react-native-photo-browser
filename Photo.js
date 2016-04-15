@@ -1,5 +1,6 @@
 import React, {
   Component,
+  Dimensions,
   Image,
   StyleSheet,
   View,
@@ -74,6 +75,7 @@ export default class Photo extends Component {
 
   render() {
     const { style } = this.props;
+    const { height, width } = Dimensions.get('window');
     const { uri } = this.state;
     let source;
     if (uri) {
@@ -85,7 +87,10 @@ export default class Photo extends Component {
     return (
       <Image
         {...this.props}
-        style={[style, styles.container]}
+        style={[style, styles.container, {
+          height,
+          width,
+        }]}
         source={source}
         onProgress={this._onProgress}
         onError={this._onError}

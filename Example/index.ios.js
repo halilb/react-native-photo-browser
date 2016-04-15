@@ -37,6 +37,7 @@ class PhotoBrowserExample extends Component {
       <View style={styles.container}>
         <PhotoBrowser
           dataSource={this.state.dataSource}
+          initialIndex={2}
         />
       </View>
     );

@@ -1,4 +1,5 @@
 import React, {
+  DeviceEventEmitter,
   Dimensions,
   ListView,
   View,
@@ -11,14 +12,11 @@ import React, {
 import Bar from './Bar';
 import Photo from './Photo';
 
-const sizes = Dimensions.get('window');
-const screenWidth = sizes.width;
-const screenHeight = sizes.height;
-
 export default class PhotoBrowser extends React.Component {
 
   static propTypes = {
     dataSource: PropTypes.instanceOf(ListView.DataSource).isRequired,
+    initialIndex: PropTypes.number,
   };
 
   constructor(props, context) {
@@ -30,20 +28,31 @@ export default class PhotoBrowser extends React.Component {
 
     this.photoRefs = [];
     this.state = {
-      currentIndex: 0,
+      currentIndex: props.initialIndex,
       controlsDisplayed: true,
     };
   }
 
   componentDidMount() {
+    DeviceEventEmitter.addListener('didUpdateDimensions', () => {
+      this.photoRefs.map(p => p.forceUpdate());
+      this.openPage(this.state.currentIndex, false);
+    });
     this._triggerCurrentPhotoLoad();
+    this.openPage(this.state.currentIndex, false);
   }
 
-  _openPage(index) {
-    if (this.state.controlsDisplayed) {
-      this._toggleControls();
-    }
+  openPage(index, animated) {
+    const screenWidth = Dimensions.get('window').width;
 
+    this.refs.list.scrollTo({
+      x: index * screenWidth,
+      animated,
+    });
+    this._updatePageIndex(index);
+  }
+
+  _updatePageIndex(index) {
     this.setState({
       currentIndex: index,
     });
@@ -52,7 +61,9 @@ export default class PhotoBrowser extends React.Component {
 
   _triggerCurrentPhotoLoad() {
     const current = this.photoRefs[this.state.currentIndex];
-    current.load();
+    if (current) {
+      current.load();
+    }
   }
 
   _toggleControls() {
@@ -70,7 +81,11 @@ export default class PhotoBrowser extends React.Component {
     const newIndex = Math.floor((event.contentOffset.x + 0.5 * layoutWidth) / layoutWidth);
 
     if (currentIndex !== newIndex) {
-      this._openPage(newIndex);
+      this._updatePageIndex(newIndex);
+
+      if (this.state.controlsDisplayed) {
+        this._toggleControls();
+      }
     }
   }
 
@@ -79,7 +94,6 @@ export default class PhotoBrowser extends React.Component {
       <TouchableWithoutFeedback onPress={this._toggleControls}>
         <Photo
           ref={ref => this.photoRefs[rowID] = ref}
-          style={styles.fullSize}
           uri={photo}
         />
       </TouchableWithoutFeedback>
@@ -97,6 +111,7 @@ export default class PhotoBrowser extends React.Component {
         />
 
         <ListView
+          ref="list"
           style={styles.list}
           dataSource={this.props.dataSource}
           renderRow={this._renderPhoto}
@@ -105,6 +120,9 @@ export default class PhotoBrowser extends React.Component {
           pagingEnabled
           maximumZoomScale={5.0}
           showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
+          directionalLockEnabled
+          scrollEventThrottle={16}
         />
 
         <Bar
@@ -128,10 +146,6 @@ export default class PhotoBrowser extends React.Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'black',
-  },
-  fullSize: {
-    width: screenWidth,
-    height: screenHeight,
   },
   list: {
     flex: 1,
