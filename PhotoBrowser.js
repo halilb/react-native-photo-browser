@@ -1,7 +1,5 @@
 import React, {
-  Animated,
   Dimensions,
-  Text,
   ListView,
   View,
   StyleSheet,
@@ -10,6 +8,7 @@ import React, {
   TouchableWithoutFeedback,
 } from 'react-native';
 
+import Bar from './Bar';
 import Photo from './Photo';
 
 const sizes = Dimensions.get('window');
@@ -32,8 +31,7 @@ export default class PhotoBrowser extends React.Component {
     this.photoRefs = [];
     this.state = {
       currentIndex: 0,
-      showControls: true,
-      controlAnim: new Animated.Value(1),
+      controlsDisplayed: true,
     };
   }
 
@@ -41,17 +39,13 @@ export default class PhotoBrowser extends React.Component {
     this._triggerCurrentPhotoLoad();
   }
 
-  _onScroll(e) {
-    const event = e.nativeEvent;
-    const layoutWidth = event.layoutMeasurement.width;
-    const currentIndex = Math.floor((event.contentOffset.x + 0.5 * layoutWidth) / layoutWidth);
-
-    if (this.state.showControls && currentIndex !== this.state.currentIndex) {
+  _openPage(index) {
+    if (this.state.controlsDisplayed) {
       this._toggleControls();
     }
 
     this.setState({
-      currentIndex,
+      currentIndex: index,
     });
     this._triggerCurrentPhotoLoad();
   }
@@ -62,16 +56,22 @@ export default class PhotoBrowser extends React.Component {
   }
 
   _toggleControls() {
-    const showControls = !this.state.showControls;
+    const controlsDisplayed = !this.state.controlsDisplayed;
 
     this.setState({
-      showControls,
+      controlsDisplayed,
     });
+  }
 
-    Animated.timing(this.state.controlAnim, {
-      toValue: showControls ? 1 : 0,
-      duration: 300,
-    }).start();
+  _onScroll(e) {
+    const { currentIndex } = this.state;
+    const event = e.nativeEvent;
+    const layoutWidth = event.layoutMeasurement.width;
+    const newIndex = Math.floor((event.contentOffset.x + 0.5 * layoutWidth) / layoutWidth);
+
+    if (currentIndex !== newIndex) {
+      this._openPage(newIndex);
+    }
   }
 
   _renderPhoto(photo, sectionID, rowID) {
@@ -79,28 +79,10 @@ export default class PhotoBrowser extends React.Component {
       <TouchableWithoutFeedback onPress={this._toggleControls}>
         <Photo
           ref={ref => this.photoRefs[rowID] = ref}
-          style={[styles.fullSize, styles.image]}
+          style={styles.fullSize}
           uri={photo}
         />
       </TouchableWithoutFeedback>
-    );
-  }
-
-  _renderTopBar() {
-    return (
-      <Animated.View style={[styles.barContainer, {
-        opacity: this.state.controlAnim,
-        transform: [{
-          translateY: this.state.controlAnim.interpolate({
-            inputRange: [0, 1],
-            outputRange: [-54, 0],
-          }),
-        }],
-      }]}>
-        <Text
-          style={[styles.text, styles.title]}
-        >{`${this.state.currentIndex + 1} of ${this.props.dataSource.getRowCount()}`}</Text>
-      </Animated.View>
     );
   }
 
@@ -108,13 +90,11 @@ export default class PhotoBrowser extends React.Component {
     return (
       <View style={styles.container}>
         <StatusBar
-          hidden={!this.state.showControls}
+          hidden={!this.state.controlsDisplayed}
           showHideTransition={'slide'}
           barStyle={'light-content'}
           animated
         />
-
-        {this._renderTopBar()}
 
         <ListView
           style={styles.list}
@@ -126,6 +106,19 @@ export default class PhotoBrowser extends React.Component {
           maximumZoomScale={5.0}
           showsHorizontalScrollIndicator={false}
         />
+
+        <Bar
+          position={'top'}
+          displayed={this.state.controlsDisplayed}
+          label={`${this.state.currentIndex + 1} of ${this.props.dataSource.getRowCount()}`}
+        />
+
+        <Bar
+          position={'bottom'}
+          displayed={this.state.controlsDisplayed}
+          label={'Test'}
+        />
+
       </View>
     );
   }
@@ -142,26 +135,5 @@ const styles = StyleSheet.create({
   },
   list: {
     flex: 1,
-  },
-  text: {
-    color: 'white',
-  },
-  title: {
-    fontWeight: '700',
-    paddingTop: 22,
-  },
-  barContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    height: 54,
-    marginTop: 16,
-    backgroundColor: '#141414',
-    borderBottomColor: 'rgba(0, 0, 0, 0.1)',
-    borderBottomWidth: 1,
-  },
-  image: {
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
