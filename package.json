@@ -9,7 +9,7 @@
   ],
   "version": "0.0.1",
   "description": "Photo browser component for React Native.",
-  "main": "PhotoBrowser.js",
+  "main": "lib/PhotoBrowser.js",
   "scripts": {},
   "author": "Halil Bilir <hbilir@gmail.com>",
   "license": "MIT",
