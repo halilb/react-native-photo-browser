@@ -39,6 +39,7 @@ class PhotoBrowserExample extends Component {
           dataSource={this.state.dataSource}
           initialIndex={2}
           displayNavArrows
+          displaySelectionButtons
           startOnGrid
         />
       </View>
