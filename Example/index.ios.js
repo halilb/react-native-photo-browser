@@ -17,6 +17,8 @@ class PhotoBrowserExample extends Component {
   constructor(props) {
     super(props);
 
+    this._onSelectionChanged = this._onSelectionChanged.bind(this);
+
     const media = [{
       thumb: 'http://farm3.static.flickr.com/2667/4072710001_f36316ddc7_q.jpg?',
       photo: 'http://farm3.static.flickr.com/2667/4072710001_f36316ddc7_b.jpg?',
@@ -34,6 +36,10 @@ class PhotoBrowserExample extends Component {
     };
   }
 
+  _onSelectionChanged(media, index, selected) {
+    console.log(`${media.photo} selection status: ${selected}`);
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -42,7 +48,8 @@ class PhotoBrowserExample extends Component {
           initialIndex={0}
           displayNavArrows
           displaySelectionButtons
-          startOnGrid
+          alwaysShowControls
+          onSelectionChanged={this._onSelectionChanged}
         />
       </View>
     );
