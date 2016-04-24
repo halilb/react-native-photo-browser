@@ -7,7 +7,6 @@ import React, {
   AppRegistry,
   Component,
   StyleSheet,
-  ListView,
   View,
 } from 'react-native';
 
@@ -39,7 +38,7 @@ class PhotoBrowserExample extends Component {
     return (
       <View style={styles.container}>
         <PhotoBrowser
-          media={this.state.media}
+          mediaList={this.state.media}
           initialIndex={0}
           displayNavArrows
           displaySelectionButtons
