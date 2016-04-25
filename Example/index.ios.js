@@ -18,6 +18,7 @@ class PhotoBrowserExample extends Component {
     super(props);
 
     this._onSelectionChanged = this._onSelectionChanged.bind(this);
+    this._onActionButtonPressed = this._onActionButtonPressed.bind(this);
 
     const media = [{
       thumb: 'http://farm3.static.flickr.com/2667/4072710001_f36316ddc7_q.jpg?',
@@ -40,6 +41,10 @@ class PhotoBrowserExample extends Component {
     console.log(`${media.photo} selection status: ${selected}`);
   }
 
+  _onActionButtonPressed(media, index) {
+    console.log(`action button pressed for ${media.photo}, index: ${index}`);
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -50,6 +55,7 @@ class PhotoBrowserExample extends Component {
           displaySelectionButtons
           alwaysShowControls
           onSelectionChanged={this._onSelectionChanged}
+          onActionButton={this._onActionButtonPressed}
         />
       </View>
     );
