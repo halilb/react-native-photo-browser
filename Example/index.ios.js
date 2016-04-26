@@ -5,6 +5,7 @@
 
 import React, {
   AppRegistry,
+  CameraRoll,
   Component,
   StyleSheet,
   View,
@@ -21,20 +22,32 @@ class PhotoBrowserExample extends Component {
     this._onActionButtonPressed = this._onActionButtonPressed.bind(this);
 
     const media = [{
-      thumb: 'http://farm3.static.flickr.com/2667/4072710001_f36316ddc7_q.jpg?',
       photo: 'http://farm3.static.flickr.com/2667/4072710001_f36316ddc7_b.jpg?',
       selected: true,
       caption: 'Grotto of the Madonna',
     }, {
-      thumb: 'http://farm3.static.flickr.com/2449/4052876281_6e068ac860_q.jpg',
       photo: 'http://farm3.static.flickr.com/2449/4052876281_6e068ac860_b.jpg',
       selected: false,
       caption: 'Beautiful Eyes',
     }];
 
     this.state = {
-      media,
+      media: [],
     };
+  }
+
+  componentDidMount() {
+    CameraRoll.getPhotos({
+      first: 100,
+      assetType: 'Photos',
+    }).then((data) => {
+      const media = [];
+      data.edges.forEach(d => media.push({
+        photo: d.node.image.uri,
+      }));
+
+      this.setState({ media });
+    }).catch(error => alert(error));
   }
 
   _onSelectionChanged(media, index, selected) {
@@ -53,9 +66,8 @@ class PhotoBrowserExample extends Component {
           initialIndex={0}
           displayNavArrows
           displaySelectionButtons
-          alwaysShowControls
           onSelectionChanged={this._onSelectionChanged}
-          onActionButton={this._onActionButtonPressed}
+          startOnGrid
         />
       </View>
     );
