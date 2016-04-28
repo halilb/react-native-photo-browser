@@ -63,11 +63,12 @@ class PhotoBrowserExample extends Component {
       <View style={styles.container}>
         <PhotoBrowser
           mediaList={this.state.media}
-          initialIndex={0}
+          initialIndex={1}
           displayNavArrows
           displaySelectionButtons
           onSelectionChanged={this._onSelectionChanged}
           startOnGrid
+          useCircleProgress
         />
       </View>
     );
