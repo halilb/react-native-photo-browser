@@ -52,7 +52,7 @@ See [index.ios.js](Example/index.ios.js) file.
 
 Follow those steps to run the example:
 
-1.  Clone the repo `git clone https://github.com/halilb/react-native-photo-browser && cd react-native-photo-browser`
+1.  Clone the repo `git clone https://github.com/halilb/react-native-photo-browser && cd react-native-photo-browser/Example`
 2.  Install dependencies `npm install``
 3. Open `PhotoBrowserExample.xcodeproj` file in Xcode and run
 
