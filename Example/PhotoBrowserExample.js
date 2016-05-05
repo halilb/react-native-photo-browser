@@ -4,6 +4,7 @@
  */
 
 import React, {
+  ActionSheetIOS,
   CameraRoll,
   Component,
   ListView,
@@ -12,6 +13,7 @@ import React, {
   Text,
   TouchableOpacity,
   View,
+  Platform,
 } from 'react-native';
 
 import PhotoBrowser from 'react-native-photo-browser';
@@ -29,6 +31,7 @@ const EXAMPLES = [
     title: 'Multiple photos',
     description: 'with captions and nav arrows',
     displayNavArrows: true,
+    displayActionButton: true,
     media: [{
       photo: 'http://farm3.static.flickr.com/2667/4072710001_f36316ddc7_b.jpg',
       selected: true,
@@ -43,9 +46,7 @@ const EXAMPLES = [
     title: 'Library photos',
     description: 'showing grid first, custom action method',
     startOnGrid: true,
-    onAction: (media, index) => {
-      console.log(`action button pressed for ${media.photo}, index: ${index}`);
-    },
+    displayActionButton: true,
   },
 ];
 
@@ -67,6 +68,7 @@ export default class PhotoBrowserExample extends Component {
     super(props);
 
     this._onSelectionChanged = this._onSelectionChanged.bind(this);
+    this._onActionButton = this._onActionButton.bind(this);
     this._renderRow = this._renderRow.bind(this);
     this._renderScene = this._renderScene.bind(this);
 
@@ -80,7 +82,20 @@ export default class PhotoBrowserExample extends Component {
   }
 
   _onSelectionChanged(media, index, selected) {
-    console.log(`${media.photo} selection status: ${selected}`);
+    alert(`${media.photo} selection status: ${selected}`);
+  }
+
+  _onActionButton(media, index) {
+    if (Platform.OS === 'ios') {
+      ActionSheetIOS.showShareActionSheetWithOptions({
+        url: media.photo,
+        message: media.caption,
+      },
+      () => {},
+      () => {});
+    } else {
+      alert(`handle sharing on android for ${media.photo}, index: ${index}`);
+    }
   }
 
   _openExample(example) {
@@ -121,7 +136,6 @@ export default class PhotoBrowserExample extends Component {
       displaySelectionButtons,
       startOnGrid,
       enableGrid,
-      onAction,
     } = route;
 
     return (
@@ -136,7 +150,7 @@ export default class PhotoBrowserExample extends Component {
         enableGrid={enableGrid}
         useCircleProgress
         onSelectionChanged={this._onSelectionChanged}
-        onActionButton={onAction}
+        onActionButton={this._onActionButton}
       />
     );
   }

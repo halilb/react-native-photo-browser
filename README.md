@@ -19,14 +19,14 @@ It has iOS only support currently but android support will be implemented very s
 |**`mediaList`**|Array\<Media\>|List of [media objects](#media-object) to display.|`[]`|
 |**`initialIndex`**|Number|Sets the visible photo initially.|`0`|
 |**`alwaysShowControls`**|Boolean|Allows to control whether the bars and controls are always visible or whether they fade away to show the photo full.|`false`|
-|**`displayActionButton`**|Boolean|Show action button to allow sharing, copying, etc.|`true`|
+|**`displayActionButton`**|Boolean|Show action button to allow sharing, copying, etc.|`false`|
 |**`displayNavArrows`**|Boolean|Whether to display left and right nav arrows on bottom toolbar.|`false`|
 |**`enableGrid`**|Boolean|Whether to allow the viewing of all the photo thumbnails on a grid.|`true`|
 |**`startOnGrid`**|Boolean|Whether to start on the grid of thumbnails instead of the first photo.|`false`|
 |**`displaySelectionButtons`**|Boolean|Whether selection buttons are shown on each image.|`false`|
 |**`useCircleProgress`**|Boolean|Displays Progress.Circle instead of default Progress.Bar for full screen photos. Check [Progress](#progress-component) section for more info.|`false`|
 |**`onSelectionChanged`**|Function|Called when a media item is selected or unselected.|`(media, index, isSelected) => {}`|
-|**`onActionButton`**|Function|Called when action button is pressed for a photo. If you don't provide this props, ActionSheetIOS will be opened by default.|`(media, index) => {}`|
+|**`onActionButton`**|Function|Called when action button is pressed for a photo. Your application should handle sharing process, please see [Sharing](#sharing) section for more information. If you don't provide this method, action button tap event will simply be ignored.|`(media, index) => {}`|
 |**`onBack`**|Function|Called when back button is tapped.|`() => {}`|
 
 ### Media Object
@@ -45,6 +45,9 @@ const media = {
 
 [react-native-progress](https://github.com/oblador/react-native-progress) component is used as progress indicator. The default progress component is `Progress.Bar`. You can also use `Progress.Circle` component by simply using `useCircleProgress` prop, and adding `ReactART` library to your Xcode project. For more information please check out [react-native-progress repo](https://github.com/oblador/react-native-progress#reactart-based-components) and [React Native documentation](http://facebook.github.io/react-native/docs/linking-libraries-ios.html#content).
 
+### Sharing
+
+I tried delivering sharing photo feature but it was complicated to provide for iOS and android out of the box. I now believe it's a better idea to separate sharing logic into another module. Please check out Example project to see a basic ActionSheetIOS implementation for iOS. You may also use available sharing libraries such as [react-native-activity-view](https://github.com/naoufal/react-native-activity-view) and [react-native-share](https://github.com/EstebanFuentealba/react-native-share).
 
 ### Examples
 
@@ -59,7 +62,6 @@ Follow those steps to run the example:
 
 ### Known issues
 * The component doesn't perform well with big photo lists.
-* Sharing a remote photo is basically sharing it's screenshot currently, and this breaks the photo resolution. Converting the image to base64 is a solution but ImageStore didn't provide efficient API performance-wise.
 
 ### Roadmap
 * [ ] Improve performance for bigger collections
