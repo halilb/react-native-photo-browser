@@ -24,7 +24,7 @@ It has iOS only support currently but android support will be implemented very s
 |**`enableGrid`**|Boolean|Whether to allow the viewing of all the photo thumbnails on a grid.|`true`|
 |**`startOnGrid`**|Boolean|Whether to start on the grid of thumbnails instead of the first photo.|`false`|
 |**`displaySelectionButtons`**|Boolean|Whether selection buttons are shown on each image.|`false`|
-|**`useCircleProgress`**|Boolean|Displays Progress.Circle instead of default Progress.Bar for full screen photos. Check [Progress](#progress-component) section for more info.|`false`|
+|**`useCircleProgress`**_iOS_|Boolean|Displays Progress.Circle instead of default Progress.Bar for full screen photos. Check [Progress](#progress-component) section for more info.|`false`|
 |**`onSelectionChanged`**|Function|Called when a media item is selected or unselected.|`(media, index, isSelected) => {}`|
 |**`onActionButton`**|Function|Called when action button is pressed for a photo. Your application should handle sharing process, please see [Sharing](#sharing) section for more information. If you don't provide this method, action button tap event will simply be ignored.|`(media, index) => {}`|
 |**`onBack`**|Function|Called when back button is tapped.|`() => {}`|
@@ -42,6 +42,12 @@ const media = {
 
 
 ### Progress Component
+
+#### Android
+
+Built-in [ProgressBarAndroid](https://facebook.github.io/react-native/docs/progressbarandroid.html) component is used for Android. Any additional configuration is not needed.
+
+#### iOS
 
 [react-native-progress](https://github.com/oblador/react-native-progress) component is used as progress indicator. The default progress component is `Progress.Bar`. You can also use `Progress.Circle` component by simply using `useCircleProgress` prop, and adding `ReactART` library to your Xcode project. For more information please check out [react-native-progress repo](https://github.com/oblador/react-native-progress#reactart-based-components) and [React Native documentation](http://facebook.github.io/react-native/docs/linking-libraries-ios.html#content).
 
