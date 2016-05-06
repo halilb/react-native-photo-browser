@@ -1,6 +1,6 @@
 # React Native Photo Browser
 
-A full screen photo browser with captions, selections and grid view support for react-native. Layout and API design are inspired by great [MWPhotoBrowser](https://github.com/mwaterfall/MWPhotoBrowser) library.
+A full screen image gallery with captions, selections and grid view support for react-native. Layout and API design are inspired by great [MWPhotoBrowser](https://github.com/mwaterfall/MWPhotoBrowser) library.
 
 It has iOS only support currently but android support will be implemented very soon.
 

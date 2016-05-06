@@ -8,6 +8,7 @@
     "react-component",
     "react-native",
     "photo browser",
+    "image gallery",
     "ios"
   ],
   "main": "lib/index.js",
