@@ -37,6 +37,9 @@ const EXAMPLES = [
       selected: true,
       caption: 'Grotto of the Madonna',
     }, {
+      photo: require('./media/broadchurch_thumbnail.png'),
+      caption: 'Broadchurch Scene',
+    }, {
       photo: 'http://farm3.static.flickr.com/2449/4052876281_6e068ac860_b.jpg',
       thumb: 'http://farm3.static.flickr.com/2449/4052876281_6e068ac860_q.jpg',
       selected: false,
