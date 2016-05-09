@@ -2,7 +2,7 @@
 
 A full screen image gallery with captions, selections and grid view support for react-native. Layout and API design are inspired by great [MWPhotoBrowser](https://github.com/mwaterfall/MWPhotoBrowser) library.
 
-It has iOS only support currently but android support will be implemented very soon.
+The component has both iOS and Android support.
 
 ![](screenshots/photo-browser.gif)
 
@@ -57,24 +57,20 @@ I tried delivering sharing photo feature but it was complicated to provide for i
 
 ### Examples
 
-See [index.ios.js](Example/index.ios.js) file.
+See [PhotoBrowserExample.js](Example/PhotoBrowserExample.js) file.
 
 Follow those steps to run the example:
 
-1.  Clone the repo `git clone https://github.com/halilb/react-native-photo-browser && cd react-native-photo-browser/Example`
-2.  Install dependencies `npm install``
-3. Open `PhotoBrowserExample.xcodeproj` file in Xcode and run
-
-
-### Known issues
-* The component doesn't perform well with big photo lists.
+1. Clone the repo `git clone https://github.com/halilb/react-native-photo-browser && cd react-native-photo-browser/Example`
+2. Install dependencies `npm install``
+3. Follow [official instructions](https://facebook.github.io/react-native/docs/getting-started.html) to run the example project in a simulator or device.
 
 ### Roadmap
-* [ ] Improve performance for bigger collections
-* [ ] Android support
-* [ ] Photo zoom
-* [ ] Video support
-* [ ] Zooming photos to fill the screen
+- [x] Android support
+- [ ] Improve performance for bigger collections
+- [ ] Video support
+- [ ] Photo zoom
+- [ ] Zooming photos to fill the screen
 
 ### Licence
 [MIT](http://opensource.org/licenses/mit-license.html)
