@@ -3,10 +3,10 @@
  * https://github.com/facebook/react-native
  */
 
-import React, {
+import React, { Component } from 'react';
+import {
   ActionSheetIOS,
   CameraRoll,
-  Component,
   ListView,
   StyleSheet,
   Navigator,

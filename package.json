@@ -1,6 +1,6 @@
 {
   "name": "react-native-photo-browser",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Local and remote photo browser with captions, selections and grid view support for react native.",
   "license": "MIT",
   "keywords": [
@@ -25,6 +25,6 @@
   "author": "Halil Bilir <hbilir@gmail.com>",
   "homepage": "https://github.com/halilb/react-native-photo-browser#readme",
   "dependencies": {
-    "react-native-progress": "^2.2.2"
+    "react-native-progress": "^3.0.0"
   }
 }

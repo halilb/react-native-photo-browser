@@ -679,7 +679,11 @@
 				);
 				INFOPLIST_FILE = PhotoBrowserExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_CODE_SIGN_FLAGS = "";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+				);
 				PRODUCT_NAME = PhotoBrowserExample;
 			};
 			name = Debug;
@@ -695,7 +699,11 @@
 				);
 				INFOPLIST_FILE = PhotoBrowserExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_CODE_SIGN_FLAGS = "";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+				);
 				PRODUCT_NAME = PhotoBrowserExample;
 			};
 			name = Release;
