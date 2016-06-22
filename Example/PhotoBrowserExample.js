@@ -32,19 +32,18 @@ const EXAMPLES = [
     description: 'with captions and nav arrows',
     displayNavArrows: true,
     displayActionButton: true,
-    media: [{
-      photo: 'http://farm3.static.flickr.com/2667/4072710001_f36316ddc7_b.jpg',
-      selected: true,
-      caption: 'Grotto of the Madonna',
-    }, {
-      photo: require('./media/broadchurch_thumbnail.png'),
-      caption: 'Broadchurch Scene',
-    }, {
-      photo: 'http://farm3.static.flickr.com/2449/4052876281_6e068ac860_b.jpg',
-      thumb: 'http://farm3.static.flickr.com/2449/4052876281_6e068ac860_q.jpg',
-      selected: false,
-      caption: 'Beautiful Eyes',
-    }],
+    startOnGrid: true,
+    media: [
+      { photo: 'https://farm6.staticflickr.com/5227/5731660209_81bcbef1d8_o_d.jpg' },
+      { photo: 'https://farm8.staticflickr.com/7372/26824196146_f877e63e1c_o_d.jpg' },
+      { photo: 'https://farm2.staticflickr.com/1653/23793994289_fd02885b65_o_d.jpg' },
+      { photo: 'https://farm9.staticflickr.com/8670/15431574604_cd620b0ca2_o_d.jpg' },
+      { photo: 'https://farm4.staticflickr.com/3911/14858548422_9479e75c6e_o_d.jpg' },
+      { photo: 'https://farm2.staticflickr.com/1587/26052596070_0125b16eef_o_d.jpg' },
+      { photo: 'https://farm8.staticflickr.com/7317/26712923894_b474b05853_o_d.jpg' },
+      { photo: 'https://farm2.staticflickr.com/1604/25736673310_f27b4ede9c_o_d.jpg' },
+      { photo: 'https://farm5.staticflickr.com/4113/5070550276_a9687b63c4_o_d.jpg' },
+    ],
   }, {
     title: 'Library photos',
     description: 'showing grid first, custom action method',
