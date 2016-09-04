@@ -63,7 +63,7 @@ See [PhotoBrowserExample.js](Example/PhotoBrowserExample.js) file.
 Follow those steps to run the example:
 
 1. Clone the repo `git clone https://github.com/halilb/react-native-photo-browser && cd react-native-photo-browser/Example`
-2. Install dependencies `npm install``
+2. Install dependencies `npm install`
 3. Follow [official instructions](https://facebook.github.io/react-native/docs/getting-started.html) to run the example project in a simulator or device.
 
 ### Roadmap
