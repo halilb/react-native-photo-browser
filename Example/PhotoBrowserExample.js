@@ -11,6 +11,7 @@ import {
   StyleSheet,
   Navigator,
   Text,
+  Image,
   TouchableOpacity,
   View,
   Platform,
@@ -74,6 +75,7 @@ export default class PhotoBrowserExample extends Component {
     this._onActionButton = this._onActionButton.bind(this);
     this._renderRow = this._renderRow.bind(this);
     this._renderScene = this._renderScene.bind(this);
+    this._renderTopRightView = this._renderTopRightView.bind(this);
 
     const dataSource = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2,
@@ -103,6 +105,18 @@ export default class PhotoBrowserExample extends Component {
 
   _openExample(example) {
     this.refs.nav.push(example);
+  }
+
+  _renderTopRightView() {
+    return (
+      <View style={{marginTop: 16, marginRight: 8, alignItems: 'center'}}>
+        <Image 
+          style={{width: 24, height: 24}}
+          source={require('./media/ic_delete.png')} 
+        />
+      </View>
+      
+    );
   }
 
   _renderRow(rowData, sectionID, rowID) {
@@ -154,6 +168,9 @@ export default class PhotoBrowserExample extends Component {
         useCircleProgress
         onSelectionChanged={this._onSelectionChanged}
         onActionButton={this._onActionButton}
+        onTopRight={() => console.log('on top right click')}
+        topRightView={this._renderTopRightView()}
+        topRightStyle={{overflow: 'hidden'}}
       />
     );
   }
