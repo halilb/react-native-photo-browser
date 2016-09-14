@@ -25,6 +25,7 @@
   "author": "Halil Bilir <hbilir@gmail.com>",
   "homepage": "https://github.com/halilb/react-native-photo-browser#readme",
   "dependencies": {
-    "react-native-progress": "^3.0.0"
+    "react-native-progress": "^3.0.0",
+    "react-native-transformable-image": "0.0.18"
   }
 }
