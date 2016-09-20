@@ -26,6 +26,8 @@
   "homepage": "https://github.com/halilb/react-native-photo-browser#readme",
   "dependencies": {
     "react-native-progress": "^3.0.0",
-    "react-native-transformable-image": "0.0.18"
+    "react-native-transformable-image": "0.0.18",
+    "@ldn0x7dc/react-native-view-pager": "0.0.9",
+    "react-native-gesture-responder": "0.1.1"
   }
 }
