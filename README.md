@@ -10,7 +10,9 @@ The component has both iOS and Android support.
 ![](screenshots/screenshot-2.png)
 
 ### Installation 
-```npm install react-native-photo-browser --save```
+```npm install react-native-photo-browser --save``` 
+
+or ```npm install react-native-photo-browser@https://github.com/ksti/react-native-photo-browser.git --save```
 
 ### Properties
 
