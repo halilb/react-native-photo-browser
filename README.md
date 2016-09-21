@@ -41,6 +41,79 @@ const media = {
 };
 ```
 
+### Usage
+```js
+_onTopRight = (currentMedia, currentIndex, gallery) => {
+    console.log('currentMedia:' + currentMedia + 'currentIndex:' + currentIndex);
+    gallery && gallery.deleteImageRef(currentIndex);
+    let initialIndex = Math.max(0, currentIndex - 1);
+    let images = this.state.images;
+    if (images.length > 1) {
+      images.splice(currentIndex, 1); // 删掉选中的照片
+      // update state
+      this.setState({
+        imageDataSource: this.state.imageDataSource.cloneWithRows(images),
+        images: images,
+        configPhotoBrowser: {
+          ...this.state.configPhotoBrowser,
+          initialIndex: initialIndex,
+          media: images.slice(0, images.length - 1),
+        },
+      })
+    } else {
+      this.setState({
+        imageDataSource: this.state.imageDataSource.cloneWithRows(images),
+        images: images,
+        configPhotoBrowser: {
+          ...this.state.configPhotoBrowser,
+          initialIndex: initialIndex,
+          media: images.slice(0, images.length - 1),
+        },
+      })
+    }
+    
+  }
+
+  _renderModalPhotoBrowser = () => {
+    const {
+      media,
+      initialIndex,
+      displayNavArrows,
+      displayActionButton,
+      displaySelectionButtons,
+      startOnGrid,
+      enableGrid,
+    } = this.state.configPhotoBrowser;
+
+    return (
+      <Modal
+        animationType={"none"}
+        transparent={true}
+        visible={this.state.showPhotoBrowser}>
+        <View
+          style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0}}>
+          <PhotoBrowser
+            onBack={() => this.setState({showPhotoBrowser: false})}
+            mediaList={media}
+            initialIndex={initialIndex}
+            displayNavArrows={displayNavArrows}
+            displaySelectionButtons={displaySelectionButtons}
+            displayActionButton={displayActionButton}
+            startOnGrid={startOnGrid}
+            enableGrid={enableGrid}
+            useCircleProgress
+            onSelectionChanged={this._onSelectionChanged}
+            onActionButton={this._onActionButton}
+            onTopRight={this._onTopRight}
+            topRightView={this._renderTopRightView()}
+            topRightStyle={{overflow: 'hidden'}}
+            useGallery={true}
+          />
+        </View>
+      </Modal>
+    );
+  }
+```
 
 ### Progress Component
 
@@ -70,7 +143,7 @@ Follow those steps to run the example:
 - [x] Android support
 - [ ] Improve performance for bigger collections
 - [ ] Video support
-- [ ] Photo zoom
+- [x] Photo zoom
 - [ ] Zooming photos to fill the screen
 
 ### Licence
