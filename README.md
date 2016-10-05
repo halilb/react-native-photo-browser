@@ -21,29 +21,29 @@ Neogrowth bring the support for zoom in and zoom out of the image and some minor
 
 #### android/setting.gradle
 Add the following line
-```include ':react-native-image-zoom'
-project(':react-native-image-zoom').projectDir = file('../node_modules/react-native-image-zoom/android')```
+    include ':react-native-image-zoom'
+    project(':react-native-image-zoom').projectDir = file('../node_modules/react-native-image-zoom/android')
 
 #### android/build.gradle
 add ```compile project``` in  dependencies
-```dependencies {
-  .
-  .
-  compile project(':react-native-image-zoom')
-}```
+    dependencies {
+      .
+      .
+      compile project(':react-native-image-zoom')
+    }
 
 #### android/app/build.gradle
-```allprojects {
-    repositories {
-        mavenLocal()
-        jcenter()
-        maven { url "https://jitpack.io" } // <-- Add this
-        maven {
-            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
-            url "$rootDir/../node_modules/react-native/android"
+    allprojects {
+        repositories {
+            mavenLocal()
+            jcenter()
+            maven { url "https://jitpack.io" } // <-- Add this
+            maven {
+                // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+                url "$rootDir/../node_modules/react-native/android"
+            }
         }
     }
-}```
 
 #### MainApplication.java
 
