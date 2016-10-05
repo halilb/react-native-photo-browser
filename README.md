@@ -4,12 +4,15 @@ A full screen image gallery with captions, selections and grid view support for 
 
 The component has both iOS and Android support.
 
+### Neogrowth Contribution
+Neogrowth bring the support for zoom in and zoom out of the image. For which the following is the dependency
+
 ![](screenshots/photo-browser.gif)
 
 ![](screenshots/screenshot-1.png)
 ![](screenshots/screenshot-2.png)
 
-### Installation 
+### Installation
 ```npm install react-native-photo-browser --save```
 
 ### Properties
