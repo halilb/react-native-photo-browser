@@ -17,7 +17,64 @@ Neogrowth bring the support for zoom in and zoom out of the image and some minor
 ![](screenshots/screenshot-2.png)
 
 ### Installation
-```npm install react-native-photo-browser --save```
+```npm install https://github.com/NeoGrowth-Credit-Pvt-Limited/react-native-photo-browser.git --save```
+
+## android/setting.gradle
+Add the following line
+```include ':react-native-image-zoom'
+project(':react-native-image-zoom').projectDir = file('../node_modules/react-native-image-zoom/android')```
+
+## android/build.gradle
+add ```compile project``` in  dependencies
+```dependencies {
+  .
+  .
+  compile project(':react-native-image-zoom')
+}```
+
+## android/app/build.gradle
+```allprojects {
+    repositories {
+        mavenLocal()
+        jcenter()
+        maven { url "https://jitpack.io" } // <-- Add this
+        maven {
+            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+            url "$rootDir/../node_modules/react-native/android"
+        }
+    }
+}```
+
+## MainApplication.java
+```import com.image.zoom.ReactImageZoom; // add this import
+
+
+public class MainApplication extends Application implements ReactApplication {
+
+  private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
+    @Override
+    protected boolean getUseDeveloperSupport() {
+      return BuildConfig.DEBUG;
+    }
+
+    @Override
+    protected List<ReactPackage> getPackages() {
+      return Arrays.<ReactPackage>asList(
+          new MainReactPackage(),
+          new RNSimpleAlertDialogPackage(),
+          .
+          .
+          .
+          new ReactImageZoom() // add this manager
+      );
+    }
+  };
+
+  @Override
+  public ReactNativeHost getReactNativeHost() {
+      return mReactNativeHost;
+  }
+}```
 
 ### Properties
 
@@ -69,7 +126,7 @@ See [PhotoBrowserExample.js](Example/PhotoBrowserExample.js) file.
 
 Follow those steps to run the example:
 
-1. Clone the repo `git clone https://github.com/halilb/react-native-photo-browser && cd react-native-photo-browser/Example`
+1. Clone the repo `git clone https://github.com/NeoGrowth-Credit-Pvt-Limited/react-native-photo-browser/Example`
 2. Install dependencies `npm install`
 3. Follow [official instructions](https://facebook.github.io/react-native/docs/getting-started.html) to run the example project in a simulator or device.
 
