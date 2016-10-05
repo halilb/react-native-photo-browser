@@ -46,35 +46,33 @@ add ```compile project``` in  dependencies
 }```
 
 #### MainApplication.java
-```import com.image.zoom.ReactImageZoom; // add this import
+``` import com.image.zoom.ReactImageZoom; // add this import
+    public class MainApplication extends Application implements ReactApplication {
 
+      private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
+        @Override
+        protected boolean getUseDeveloperSupport() {
+          return BuildConfig.DEBUG;
+        }
 
-public class MainApplication extends Application implements ReactApplication {
+        @Override
+        protected List<ReactPackage> getPackages() {
+          return Arrays.<ReactPackage>asList(
+              new MainReactPackage(),
+              new RNSimpleAlertDialogPackage(),
+              .
+              .
+              .
+              new ReactImageZoom() // add this manager
+          );
+        }
+      };
 
-  private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
-    @Override
-    protected boolean getUseDeveloperSupport() {
-      return BuildConfig.DEBUG;
-    }
-
-    @Override
-    protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(
-          new MainReactPackage(),
-          new RNSimpleAlertDialogPackage(),
-          .
-          .
-          .
-          new ReactImageZoom() // add this manager
-      );
-    }
-  };
-
-  @Override
-  public ReactNativeHost getReactNativeHost() {
-      return mReactNativeHost;
-  }
-}```
+      @Override
+      public ReactNativeHost getReactNativeHost() {
+          return mReactNativeHost;
+      }
+    }```
 
 ### Properties
 
