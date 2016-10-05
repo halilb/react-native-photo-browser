@@ -5,7 +5,11 @@ A full screen image gallery with captions, selections and grid view support for 
 The component has both iOS and Android support.
 
 ### Neogrowth Contribution
-Neogrowth bring the support for zoom in and zoom out of the image. For which the following is the dependency
+Neogrowth bring the support for zoom in and zoom out of the image and some minor bug fixes are taken care. For which the following is the dependency.
+
+[react-native-image-zoom](https://github.com/Anthonyzou/react-native-image-zoom/)
+
+
 
 ![](screenshots/photo-browser.gif)
 
@@ -49,7 +53,7 @@ const media = {
 
 #### Android
 
-Built-in [ProgressBarAndroid](https://facebook.github.io/react-native/docs/progressbarandroid.html) component is used for Android. Any additional configuration is not needed.
+Built-in [ActivityIndicator](https://facebook.github.io/react-native/docs/activityindicator.html) component is used for Android. Any additional configuration is not needed. [ProgressBarAndroid](https://facebook.github.io/react-native/docs/progressbarandroid.html) is deprecated now.
 
 #### iOS
 
