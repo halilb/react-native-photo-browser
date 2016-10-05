@@ -46,8 +46,9 @@ add ```compile project``` in  dependencies
 }```
 
 #### MainApplication.java
-``` import com.image.zoom.ReactImageZoom; // add this import
-    public class MainApplication extends Application implements ReactApplication {
+
+      import com.image.zoom.ReactImageZoom; // add this import
+      public class MainApplication extends Application implements ReactApplication {
 
       private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
         @Override
@@ -72,7 +73,7 @@ add ```compile project``` in  dependencies
       public ReactNativeHost getReactNativeHost() {
           return mReactNativeHost;
       }
-    }```
+    }
 
 ### Properties
 
