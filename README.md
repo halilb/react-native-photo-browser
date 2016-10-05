@@ -19,62 +19,62 @@ Neogrowth bring the support for zoom in and zoom out of the image and some minor
 ### Installation
 ```npm install https://github.com/NeoGrowth-Credit-Pvt-Limited/react-native-photo-browser.git --save```
 
-## android/setting.gradle
-Add the following line
-```include ':react-native-image-zoom'
-project(':react-native-image-zoom').projectDir = file('../node_modules/react-native-image-zoom/android')```
+        #### android/setting.gradle
+        Add the following line
+        ```include ':react-native-image-zoom'
+        project(':react-native-image-zoom').projectDir = file('../node_modules/react-native-image-zoom/android')```
 
-## android/build.gradle
-add ```compile project``` in  dependencies
-```dependencies {
-  .
-  .
-  compile project(':react-native-image-zoom')
-}```
-
-## android/app/build.gradle
-```allprojects {
-    repositories {
-        mavenLocal()
-        jcenter()
-        maven { url "https://jitpack.io" } // <-- Add this
-        maven {
-            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
-            url "$rootDir/../node_modules/react-native/android"
-        }
-    }
-}```
-
-## MainApplication.java
-```import com.image.zoom.ReactImageZoom; // add this import
-
-
-public class MainApplication extends Application implements ReactApplication {
-
-  private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
-    @Override
-    protected boolean getUseDeveloperSupport() {
-      return BuildConfig.DEBUG;
-    }
-
-    @Override
-    protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(
-          new MainReactPackage(),
-          new RNSimpleAlertDialogPackage(),
+        #### android/build.gradle
+        add ```compile project``` in  dependencies
+        ```dependencies {
           .
           .
-          .
-          new ReactImageZoom() // add this manager
-      );
-    }
-  };
+          compile project(':react-native-image-zoom')
+        }```
 
-  @Override
-  public ReactNativeHost getReactNativeHost() {
-      return mReactNativeHost;
-  }
-}```
+        #### android/app/build.gradle
+        ```allprojects {
+            repositories {
+                mavenLocal()
+                jcenter()
+                maven { url "https://jitpack.io" } // <-- Add this
+                maven {
+                    // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+                    url "$rootDir/../node_modules/react-native/android"
+                }
+            }
+        }```
+
+        #### MainApplication.java
+        ```import com.image.zoom.ReactImageZoom; // add this import
+
+
+        public class MainApplication extends Application implements ReactApplication {
+
+          private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
+            @Override
+            protected boolean getUseDeveloperSupport() {
+              return BuildConfig.DEBUG;
+            }
+
+            @Override
+            protected List<ReactPackage> getPackages() {
+              return Arrays.<ReactPackage>asList(
+                  new MainReactPackage(),
+                  new RNSimpleAlertDialogPackage(),
+                  .
+                  .
+                  .
+                  new ReactImageZoom() // add this manager
+              );
+            }
+          };
+
+          @Override
+          public ReactNativeHost getReactNativeHost() {
+              return mReactNativeHost;
+          }
+        }```
 
 ### Properties
 
