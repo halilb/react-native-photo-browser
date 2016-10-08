@@ -50,6 +50,7 @@ const EXAMPLES = [
     title: 'Library photos',
     description: 'showing grid first, custom action method',
     startOnGrid: true,
+    displaySelectionButtons: true,
     displayActionButton: true,
   },
 ];
@@ -166,6 +167,7 @@ export default class PhotoBrowserExample extends Component {
         startOnGrid={startOnGrid}
         enableGrid={enableGrid}
         useCircleProgress
+        useGallery={true}
         onSelectionChanged={this._onSelectionChanged}
         onActionButton={this._onActionButton}
         onTopRight={() => console.log('on top right click')}
