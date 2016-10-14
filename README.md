@@ -7,7 +7,7 @@ The component has both iOS and Android support.
 ### Neogrowth Contribution
 Neogrowth bring the support for zoom in and zoom out of the image and some minor bug fixes are taken care. For which the following is the dependency.
 
-[react-native-image-zoom](https://github.com/Anthonyzou/react-native-image-zoom/)
+[react-native-photo-view](https://github.com/alwx/react-native-photo-view/)
 
 
 
@@ -19,11 +19,11 @@ Neogrowth bring the support for zoom in and zoom out of the image and some minor
 ### Installation
 ```npm install https://github.com/NeoGrowth-Credit-Pvt-Limited/react-native-photo-browser.git --save```
 
-#### android/setting.gradle
+#### android/settings.gradle
 Add the following line
 
-    include ':react-native-image-zoom'
-    project(':react-native-image-zoom').projectDir = file('../node_modules/react-native-image-zoom/android')
+    include ':react-native-photo-view'
+    project(':react-native-photo-view').projectDir = file('../node_modules/react-native-photo-view/android')
 
 #### android/build.gradle
 add `compile project` in  dependencies
@@ -31,7 +31,7 @@ add `compile project` in  dependencies
     dependencies {
       .
       .
-      compile project(':react-native-image-zoom')
+      compile project(':react-native-photo-view')
     }
 
 #### android/app/build.gradle
@@ -49,7 +49,7 @@ add `compile project` in  dependencies
 
 #### MainApplication.java
 
-      import com.image.zoom.ReactImageZoom; // add this import
+      import com.reactnative.photoview.PhotoViewPackage; // add this import
       public class MainApplication extends Application implements ReactApplication {
 
       private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
@@ -66,7 +66,7 @@ add `compile project` in  dependencies
               .
               .
               .
-              new ReactImageZoom() // add this manager
+              new PhotoViewPackage() // add this manager
           );
         }
       };
