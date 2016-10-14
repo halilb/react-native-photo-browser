@@ -26,6 +26,6 @@
   "homepage": "https://github.com/halilb/react-native-photo-browser#readme",
   "dependencies": {
     "react-native-progress": "^3.0.0",
-    "react-native-image-zoom": "^0.31.0"
+    "react-native-photo-view": "^1.2.0"
   }
 }
