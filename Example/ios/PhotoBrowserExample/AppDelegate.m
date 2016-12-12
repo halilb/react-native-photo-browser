@@ -9,6 +9,8 @@
 
 #import "AppDelegate.h"
 
+#import "RCTBundleURLProvider.h"
+
 #import "RCTRootView.h"
 
 @implementation AppDelegate
@@ -42,6 +44,12 @@
    */
 
 //   jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+  
+#ifdef DEBUG
+  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
+#else
+  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
+#endif
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"PhotoBrowserExample"

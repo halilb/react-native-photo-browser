@@ -9,7 +9,7 @@ import com.android.build.OutputFile
  * cycle. By default, bundleDebugJsAndAssets is skipped, as in debug/dev mode we prefer to load the
  * bundle directly from the development server. Below you can see all the possible configurations
  * and their defaults. If you decide to add a configuration block, make sure to add it before the
- * `apply from: "../../node_modules/react-native/react.gradle"` line.
+ * `apply from: "react.gradle"` line.
  *
  * project.ext.react = [
  *   // the name of the generated asset file containing your JS bundle
@@ -55,17 +55,11 @@ import com.android.build.OutputFile
  *   // date; if you have any other folders that you want to ignore for performance reasons (gradle
  *   // indexes the entire tree), add them here. Alternatively, if you have JS files in android/
  *   // for example, you might want to remove it from here.
- *   inputExcludes: ["android/**", "ios/**"],
- *
- *   // override which node gets called and with what additional arguments
- *   nodeExecutableAndArgs: ["node"]
- *
- *   // supply additional arguments to the packager
- *   extraPackagerArgs: []
+ *   inputExcludes: ["android/**", "ios/**"]
  * ]
  */
 
-apply from: "../../node_modules/react-native/react.gradle"
+apply from: "react.gradle"
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -81,9 +75,11 @@ def enableSeparateBuildPerCPUArchitecture = false
  * Run Proguard to shrink the Java bytecode in release builds.
  */
 def enableProguardInReleaseBuilds = false
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
+
     defaultConfig {
         applicationId "com.photobrowserexample"
         minSdkVersion 16
@@ -103,13 +99,9 @@ android {
         }
     }
     buildTypes {
-        debug {
-            signingConfig signingConfigs.debug
-        }
         release {
-            debuggable true
-            signingConfig signingConfigs.debug
-            minifyEnabled true
+            minifyEnabled enableProguardInReleaseBuilds
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
     signingConfigs {
@@ -120,20 +112,20 @@ android {
             keyPassword 'android'
             storePassword 'android'
         }
-        release {
+         release {
             // storeFile file("E:\\VSCodeWorkSpace\\YuanXinMobileOffice\\key.keystore")
             storeFile file("/Users/forp/Desktop/__test/debug.keystore")
             keyAlias 'androiddebugkey'
             keyPassword 'android'
             storePassword 'android'
-        }
+         }
     }
     // applicationVariants are e.g. debug, release
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
             // For each separate APK per architecture, set a unique version code as described here:
             // http://tools.android.com/tech-docs/new-build-system/user-guide/apk-splits
-            def versionCodes = ["armeabi-v7a": 1, "x86": 2]
+            def versionCodes = ["armeabi-v7a":1, "x86":2]
             def abi = output.getFilter(OutputFile.ABI)
             if (abi != null) {  // null for the universal-debug, universal-release variants
                 output.versionCodeOverride =
@@ -141,27 +133,10 @@ android {
             }
         }
     }
-    productFlavors {
-    }
-
-    sourceSets {
-        main {
-            jniLibs.srcDirs = ['libs']
-        }
-    }
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:23.0.1'
-    compile 'com.facebook.react:react-native:+'
-    // From node_modules
+    compile fileTree(dir: "libs", include: ["*.jar"])
+    compile "com.android.support:appcompat-v7:23.0.1"
+    compile "com.facebook.react:react-native:+"  // From node_modules
 }
-
-// Run this once to be able to run the application with BUCK
-// puts all compile dependencies into folder libs for BUCK to use
-task copyDownloadableDepsToLibs(type: Copy) {
-    from configurations.compile
-    into 'libs'
-}
-

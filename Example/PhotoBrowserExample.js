@@ -25,7 +25,8 @@ const EXAMPLES = [
     description: 'with caption, no grid button',
     enableGrid: false,
     media: [{
-      photo: 'http://farm3.static.flickr.com/2667/4072710001_f36316ddc7_b.jpg',
+      // photo: 'http://farm3.static.flickr.com/2667/4072710001_f36316ddc7_b.jpg',
+      photo: 'http://sanantoniotourist.net/wp-content/uploads/2013/07/100_1922.jpg',
       caption: 'Grotto of the Madonna',
     }],
   }, {
@@ -34,15 +35,23 @@ const EXAMPLES = [
     displayNavArrows: true,
     displayActionButton: true,
     media: [{
-      photo: 'http://farm3.static.flickr.com/2667/4072710001_f36316ddc7_b.jpg',
+      // photo: 'http://farm3.static.flickr.com/2667/4072710001_f36316ddc7_b.jpg',
+      photo: 'http://sanantoniotourist.net/wp-content/uploads/2013/07/100_1922.jpg',
       selected: true,
       caption: 'Grotto of the Madonna',
     }, {
       photo: require('./media/broadchurch_thumbnail.png'),
       caption: 'Broadchurch Scene',
     }, {
-      photo: 'http://farm3.static.flickr.com/2449/4052876281_6e068ac860_b.jpg',
-      thumb: 'http://farm3.static.flickr.com/2449/4052876281_6e068ac860_q.jpg',
+      photo: 'https://a1.dspncdn.com/media/692x/9c/ed/1b/9ced1b427a167ed38b0b66fe3c62f2ae.jpg',
+      thumb: 'https://a1.dspncdn.com/media/206x/9c/ed/1b/9ced1b427a167ed38b0b66fe3c62f2ae.jpg',
+      selected: false,
+      caption: 'rose && fire',
+    }, {
+      // photo: 'http://farm3.static.flickr.com/2449/4052876281_6e068ac860_b.jpg',
+      // thumb: 'http://farm3.static.flickr.com/2449/4052876281_6e068ac860_q.jpg',
+      photo: 'https://a1.dspncdn.com/media/692x/64/9c/53/649c5331e0f1fb645fa8d25a4ec0e53c.jpg',
+      thumb: 'https://a1.dspncdn.com/media/206x/64/9c/53/649c5331e0f1fb645fa8d25a4ec0e53c.jpg',
       selected: false,
       caption: 'Beautiful Eyes',
     }],
