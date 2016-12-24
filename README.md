@@ -48,6 +48,8 @@ const media = {
 
 Built-in [ProgressBarAndroid](https://facebook.github.io/react-native/docs/progressbarandroid.html) component is used for Android. Any additional configuration is not needed.
 
+Dependents to [react-native-photo-view](https://github.com/alwx/react-native-photo-view), must setup module install read their docs.
+
 #### iOS
 
 [react-native-progress](https://github.com/oblador/react-native-progress) component is used as progress indicator. The default progress component is `Progress.Bar`. You can also use `Progress.Circle` component by simply using `useCircleProgress` prop, and adding `ReactART` library to your Xcode project. For more information please check out [react-native-progress repo](https://github.com/oblador/react-native-progress#reactart-based-components) and [React Native documentation](http://facebook.github.io/react-native/docs/linking-libraries-ios.html#content).
@@ -70,7 +72,7 @@ Follow those steps to run the example:
 - [x] Android support
 - [ ] Improve performance for bigger collections
 - [ ] Video support
-- [ ] Photo zoom
+- [x] Photo zoom
 - [ ] Zooming photos to fill the screen
 
 ### Licence
