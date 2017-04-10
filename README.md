@@ -29,6 +29,8 @@ The component has both iOS and Android support.
 |**`onActionButton`**|Function|Called when action button is pressed for a photo. Your application should handle sharing process, please see [Sharing](#sharing) section for more information. If you don't provide this method, action button tap event will simply be ignored.|`(media, index) => {}`|
 |**`onBack`**|Function|Called when back button is tapped.|`() => {}`|
 |**`itemPerRow`**|Number|Sets images amount in grid row.|`3`|
+|**`onPhotoLongPress`**|Function|Called when a long press trigged on a photo.|`() => {}`|
+|**`delayPhotoLongPress`**|Number|The long press delay in `ms`.|`1000`|
 
 ### Media Object
 
