@@ -9,7 +9,7 @@ The component has both iOS and Android support.
 ![](screenshots/screenshot-1.png)
 ![](screenshots/screenshot-2.png)
 
-### Installation 
+### Installation
 ```npm install react-native-photo-browser --save```
 
 ### Properties
@@ -19,6 +19,7 @@ The component has both iOS and Android support.
 |**`mediaList`**|Array\<Media\>|List of [media objects](#media-object) to display.|`[]`|
 |**`initialIndex`**|Number|Sets the visible photo initially.|`0`|
 |**`alwaysShowControls`**|Boolean|Allows to control whether the bars and controls are always visible or whether they fade away to show the photo full.|`false`|
+|**`displayTopBar`**|Boolean|Whether to display the TopBar|`true`|
 |**`displayActionButton`**|Boolean|Show action button to allow sharing, copying, etc.|`false`|
 |**`displayNavArrows`**|Boolean|Whether to display left and right nav arrows on bottom toolbar.|`false`|
 |**`enableGrid`**|Boolean|Whether to allow the viewing of all the photo thumbnails on a grid.|`true`|
