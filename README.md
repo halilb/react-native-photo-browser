@@ -47,7 +47,7 @@ const media = {
 
 #### Android
 
-Built-in [ProgressBarAndroid](https://facebook.github.io/react-native/docs/progressbarandroid.html) component is used for Android. Any additional configuration is not needed.
+Built-in [ActivityIndicator](https://facebook.github.io/react-native/docs/activityindicator.html) component is used for Android. Any additional configuration is not needed.
 
 #### iOS
 
