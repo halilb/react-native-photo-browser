@@ -4,13 +4,78 @@ A full screen image gallery with captions, selections and grid view support for 
 
 The component has both iOS and Android support.
 
+### Neogrowth Contribution
+Neogrowth bring the support for zoom in and zoom out of the image and some minor bug fixes are taken care. For which the following is the dependency.
+
+[react-native-photo-view](https://github.com/alwx/react-native-photo-view/)
+
+
+
 ![](screenshots/photo-browser.gif)
 
 ![](screenshots/screenshot-1.png)
 ![](screenshots/screenshot-2.png)
 
-### Installation 
-```npm install react-native-photo-browser --save```
+### Installation
+```npm install https://github.com/NeoGrowth-Credit-Pvt-Limited/react-native-photo-browser.git --save```
+
+#### android/settings.gradle
+Add the following line
+
+    include ':react-native-photo-view'
+    project(':react-native-photo-view').projectDir = file('../node_modules/react-native-photo-view/android')
+
+#### android/build.gradle
+add `compile project` in  dependencies
+
+    dependencies {
+      .
+      .
+      compile project(':react-native-photo-view')
+    }
+
+#### android/app/build.gradle
+    allprojects {
+        repositories {
+            mavenLocal()
+            jcenter()
+            maven { url "https://jitpack.io" } // <-- Add this
+            maven {
+                // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+                url "$rootDir/../node_modules/react-native/android"
+            }
+        }
+    }
+
+#### MainApplication.java
+
+      import com.reactnative.photoview.PhotoViewPackage; // add this import
+      public class MainApplication extends Application implements ReactApplication {
+
+      private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
+        @Override
+        protected boolean getUseDeveloperSupport() {
+          return BuildConfig.DEBUG;
+        }
+
+        @Override
+        protected List<ReactPackage> getPackages() {
+          return Arrays.<ReactPackage>asList(
+              new MainReactPackage(),
+              new RNSimpleAlertDialogPackage(),
+              .
+              .
+              .
+              new PhotoViewPackage() // add this manager
+          );
+        }
+      };
+
+      @Override
+      public ReactNativeHost getReactNativeHost() {
+          return mReactNativeHost;
+      }
+    }
 
 ### Properties
 
@@ -46,7 +111,7 @@ const media = {
 
 #### Android
 
-Built-in [ProgressBarAndroid](https://facebook.github.io/react-native/docs/progressbarandroid.html) component is used for Android. Any additional configuration is not needed.
+Built-in [ActivityIndicator](https://facebook.github.io/react-native/docs/activityindicator.html) component is used for Android. Any additional configuration is not needed. [ProgressBarAndroid](https://facebook.github.io/react-native/docs/progressbarandroid.html) is deprecated now.
 
 #### iOS
 
@@ -62,7 +127,7 @@ See [PhotoBrowserExample.js](Example/PhotoBrowserExample.js) file.
 
 Follow those steps to run the example:
 
-1. Clone the repo `git clone https://github.com/halilb/react-native-photo-browser && cd react-native-photo-browser/Example`
+1. Clone the repo `git clone https://github.com/NeoGrowth-Credit-Pvt-Limited/react-native-photo-browser/Example`
 2. Install dependencies `npm install`
 3. Follow [official instructions](https://facebook.github.io/react-native/docs/getting-started.html) to run the example project in a simulator or device.
 
