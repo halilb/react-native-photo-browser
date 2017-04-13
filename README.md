@@ -21,6 +21,7 @@ The component has both iOS and Android support.
 |**`alwaysShowControls`**|Boolean|Allows to control whether the bars and controls are always visible or whether they fade away to show the photo full.|`false`|
 |**`displayActionButton`**|Boolean|Show action button to allow sharing, copying, etc.|`false`|
 |**`displayNavArrows`**|Boolean|Whether to display left and right nav arrows on bottom toolbar.|`false`|
+|**`displayTopBar`**|Boolean|Whether to display top bar.|`false`|
 |**`enableGrid`**|Boolean|Whether to allow the viewing of all the photo thumbnails on a grid.|`true`|
 |**`startOnGrid`**|Boolean|Whether to start on the grid of thumbnails instead of the first photo.|`false`|
 |**`displaySelectionButtons`**|Boolean|Whether selection buttons are shown on each image.|`false`|
