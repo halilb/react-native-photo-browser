@@ -16,6 +16,7 @@ The component has both iOS and Android support.
 
 | Prop | Type | Description | Default |
 |---|---|---|---|
+|**`style`**|Style|Overrides default container style.|`null`|
 |**`mediaList`**|Array\<Media\>|List of [media objects](#media-object) to display.|`[]`|
 |**`initialIndex`**|Number|Sets the visible photo initially.|`0`|
 |**`alwaysShowControls`**|Boolean|Allows to control whether the bars and controls are always visible or whether they fade away to show the photo full.|`false`|
