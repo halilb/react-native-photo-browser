@@ -17,7 +17,6 @@ The component has both iOS and Android support.
 | Prop | Type | Description | Default |
 |---|---|---|---|
 |**`style`**|Style|Overrides default container style.|`null`|
-|**`square`**|Boolean|Displays the thumbnails as squares(same width, height).|`false`|
 |**`mediaList`**|Array\<Media\>|List of [media objects](#media-object) to display.|`[]`|
 |**`initialIndex`**|Number|Sets the visible photo initially.|`0`|
 |**`alwaysShowControls`**|Boolean|Allows to control whether the bars and controls are always visible or whether they fade away to show the photo full.|`false`|
@@ -35,6 +34,8 @@ The component has both iOS and Android support.
 |**`itemPerRow`**|Number|Sets images amount in grid row.|`3`|
 |**`onPhotoLongPress`**|Function|Called when a long press trigged on a photo.|`() => {}`|
 |**`delayPhotoLongPress`**|Number|The long press delay in `ms`.|`1000`|
+|**`square`**|Boolean|Displays the thumbnails as squares(same width, height).|`false`|
+|**`gridOffset`**|Number|Offset the width of the grid from the screen width.|`0`|
 
 ### Media Object
 
