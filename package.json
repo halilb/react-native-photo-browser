@@ -30,7 +30,7 @@
   "devDependencies": {
     "babel-eslint": "^7.2.3",
     "eslint": "^4.2.0",
-    "eslint-plugin-react": "^7.1.0"
+    "eslint-plugin-react": "^7.1.0",
     "react-native-progress": "^3.2.0",
     "prop-types": "15.5.10"
   }
