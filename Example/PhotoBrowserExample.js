@@ -23,6 +23,7 @@ const EXAMPLES = [
     title: 'Single photo',
     description: 'with caption, no grid button',
     enableGrid: false,
+    alwaysDisplayStatusBar: true,
     media: [{
       photo: 'http://farm3.static.flickr.com/2667/4072710001_f36316ddc7_b.jpg',
       caption: 'Grotto of the Madonna',
@@ -139,6 +140,7 @@ export default class PhotoBrowserExample extends Component {
       displaySelectionButtons,
       startOnGrid,
       enableGrid,
+      alwaysDisplayStatusBar,
     } = route;
 
     return (
@@ -154,6 +156,7 @@ export default class PhotoBrowserExample extends Component {
         useCircleProgress
         onSelectionChanged={this._onSelectionChanged}
         onActionButton={this._onActionButton}
+        alwaysDisplayStatusBar={alwaysDisplayStatusBar}
       />
     );
   }
