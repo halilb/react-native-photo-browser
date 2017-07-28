@@ -715,12 +715,18 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.8:
+prop-types@15.5.10, prop-types@^15.5.10, prop-types@^15.5.8:
   version "15.5.10"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.10.tgz#2797dfc3126182e3a95e3dfbb2e893ddd7456154"
   dependencies:
     fbjs "^0.8.9"
     loose-envify "^1.3.1"
+
+"react-native-fast-image@https://github.com/DylanVann/react-native-fast-image":
+  version "0.1.1"
+  resolved "https://github.com/DylanVann/react-native-fast-image#5831d226535eec65c1e5fd8f1ec0f3ea49c4a48f"
+  dependencies:
+    prop-types "^15.5.10"
 
 react-native-progress@^3.2.0:
   version "3.3.0"
