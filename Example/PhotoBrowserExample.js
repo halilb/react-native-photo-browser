@@ -9,12 +9,13 @@ import {
   CameraRoll,
   ListView,
   StyleSheet,
-  Navigator,
   Text,
   TouchableOpacity,
   View,
   Platform,
 } from 'react-native';
+
+import { Navigator } from 'react-native-deprecated-custom-components';
 
 import PhotoBrowser from 'react-native-photo-browser';
 
