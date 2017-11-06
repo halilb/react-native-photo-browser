@@ -1,7 +1,12 @@
-import React, {
-  AppRegistry,
-} from 'react-native';
+import React, { AppRegistry } from 'react-native';
 
-import PhotoBrowserExample from './PhotoBrowserExample';
+import { StackNavigator } from 'react-navigation';
+import HomeScreen from './HomeScreen';
+import DetailScreen from './DetailScreen';
 
-AppRegistry.registerComponent('PhotoBrowserExample', () => PhotoBrowserExample);
+const App = StackNavigator({
+  Home: { screen: HomeScreen },
+  Detail: { screen: DetailScreen },
+});
+
+AppRegistry.registerComponent('PhotoBrowserExample', () => App);
