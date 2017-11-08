@@ -53,6 +53,7 @@ export default class HomeScreen extends Component {
         onSelectionChanged={this.onSelectionChanged}
         onActionButton={this.onActionButton}
         alwaysDisplayStatusBar={alwaysDisplayStatusBar}
+        customTitle={(index, rowCount) => `${index} sur ${rowCount}`}
       />
     );
   }
