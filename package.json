@@ -1,6 +1,8 @@
 {
   "name": "react-native-photo-browser",
-  "version": "0.3.3",
+
+  "version": "0.4.0",
+
   "description": "Local and remote photo browser with captions, selections and grid view support for react native.",
   "license": "MIT",
   "keywords": [
