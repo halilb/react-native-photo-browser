@@ -36,6 +36,7 @@ The component has both iOS and Android support.
 |**`delayPhotoLongPress`**|Number|The long press delay in `ms`.|`1000`|
 |**`square`**|Boolean|Displays the thumbnails as squares(same width, height).|`false`|
 |**`gridOffset`**|Number|Offset the width of the grid from the screen width.|`0`|
+|**`customTitle`**|Function|Custom title in full screen mode.|`(index, rowCount) => { return '' }`|
 
 ### Media Object
 
