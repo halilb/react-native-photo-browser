@@ -1,10 +1,5 @@
 # React Native Photo Browser
 
-### ngandhy Branch Info
-- Seems like the original repo is no longer maintained. 
-- This branch fixes initial index bug by using flatlist vs listview https://github.com/halilb/react-native-photo-browser/pull/76
-
-
 ### Information
 A full screen image gallery with captions, selections and grid view support for react-native. Layout and API design are inspired by great [MWPhotoBrowser](https://github.com/mwaterfall/MWPhotoBrowser) library.
 
