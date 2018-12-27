@@ -55,6 +55,7 @@ const EXAMPLES = [
     description: 'showing grid first, custom action method',
     startOnGrid: true,
     displayActionButton: true,
+    displaySelectionButtons: true
   },
 ];
 

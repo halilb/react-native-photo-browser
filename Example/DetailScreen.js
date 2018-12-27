@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ActionSheetIOS, Platform } from 'react-native';
+import { ActionSheetIOS, Platform, Button } from 'react-native';
 
 import PhotoBrowser from 'react-native-photo-browser';
 
@@ -8,8 +8,23 @@ export default class HomeScreen extends Component {
     header: null,
   };
 
+  state = {
+    mediaList: this.props.navigation.state.params.example.media,
+    selected: new Set(),
+  }
+
   onSelectionChanged = (media, index, selected) => {
-    alert(`${media.photo} selection status: ${selected}`);
+    this.setState(prevState => {
+      const copy = new Set(prevState.selected);
+      if (selected) {
+        copy.add(index);
+      } else {
+        copy.delete(index);
+      }
+      return { 
+        selected: copy, 
+      };
+    });
   };
 
   onActionButton = (media, index) => {
@@ -29,7 +44,6 @@ export default class HomeScreen extends Component {
 
   render() {
     const {
-      media,
       initialIndex,
       displayNavArrows,
       displayActionButton,
@@ -39,22 +53,37 @@ export default class HomeScreen extends Component {
       alwaysDisplayStatusBar,
     } = this.props.navigation.state.params.example;
 
+    const { mediaList, selected } = this.state;
+
     return (
-      <PhotoBrowser
-        onBack={navigator.pop}
-        mediaList={media}
-        initialIndex={initialIndex}
-        displayNavArrows={displayNavArrows}
-        displaySelectionButtons={displaySelectionButtons}
-        displayActionButton={displayActionButton}
-        startOnGrid={startOnGrid}
-        enableGrid={enableGrid}
-        useCircleProgress
-        onSelectionChanged={this.onSelectionChanged}
-        onActionButton={this.onActionButton}
-        alwaysDisplayStatusBar={alwaysDisplayStatusBar}
-        customTitle={(index, rowCount) => `${index} sur ${rowCount}`}
-      />
+      <>
+        <PhotoBrowser
+          onBack={navigator.pop}
+          mediaList={mediaList}
+          initialIndex={initialIndex}
+          displayNavArrows={displayNavArrows}
+          displaySelectionButtons={displaySelectionButtons}
+          displayActionButton={displayActionButton}
+          startOnGrid={startOnGrid}
+          enableGrid={enableGrid}
+          useCircleProgress
+          onSelectionChanged={this.onSelectionChanged}
+          onActionButton={this.onActionButton}
+          alwaysDisplayStatusBar={alwaysDisplayStatusBar}
+          customTitle={(index, rowCount) => `${index} sur ${rowCount}`}
+        />
+        {selected.size > 0 && (
+          <Button
+            title="Delete"
+            onPress={() =>
+              this.setState(prevState => ({
+                mediaList: prevState.mediaList.filter((_, i) => !prevState.selected.has(i)),
+                selected: new Set(),
+              }))
+            }
+          />
+        )}
+      </>
     );
   }
 }
